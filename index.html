@@ -16,6 +16,22 @@
         <p>A culinary journey through exquisite flavors</p>
     </header>
 
+    <div class="search-filter-section">
+        <div class="search-container">
+            <input type="text" id="menuSearch" placeholder="Search dishes...">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+            <button class="filter-btn" data-filter="gluten-free">Gluten Free</button>
+            <div class="price-filter">
+                <label for="priceRange">Max Price: $<span id="priceValue">50</span></label>
+                <input type="range" id="priceRange" min="0" max="50" value="50" step="5">
+            </div>
+        </div>
+    </div>
+
     <main class="menu-container">
         <!-- Appetizers Section -->
         <section class="menu-category" id="appetizers">
@@ -110,6 +126,27 @@
             </div>
         </section>
     </main>
+
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-content">
+            <h3>Your Order</h3>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <button id="checkout-btn">Proceed to Checkout</button>
+            <button id="close-cart-btn">Close</button>
+        </div>
+    </div>
+
+    <div id="nutrition-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Nutritional Information</h3>
+            <div id="nutrition-content"></div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">

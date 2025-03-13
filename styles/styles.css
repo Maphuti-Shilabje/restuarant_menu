@@ -119,6 +119,77 @@ body {
   height: 20px;
 }
 
+/* Search and Filter Section */
+.search-filter-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#menuSearch {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#searchBtn {
+  padding: 0.8rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#searchBtn:hover {
+  background: #1a252f;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.price-filter {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#priceRange {
+  width: 200px;
+}
+
 /* Special Dishes Section */
 .special-dishes {
   background: var(--primary-color);
@@ -142,6 +213,160 @@ body {
 
 .daily-specials .category-title {
   color: var(--secondary-color);
+}
+
+/* Cart Popup */
+.cart-popup {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  z-index: 1000;
+}
+
+.cart-popup.active {
+  display: block;
+}
+
+.cart-content {
+  padding: 1.5rem;
+}
+
+.cart-content h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+#cart-items {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin: 1rem 0;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
+}
+
+#checkout-btn, #close-cart-btn {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#checkout-btn {
+  background: var(--secondary-color);
+  color: white;
+}
+
+#close-cart-btn {
+  background: #eee;
+  color: var(--text-color);
+}
+
+#checkout-btn:hover {
+  background: #a93122;
+}
+
+#close-cart-btn:hover {
+  background: #ddd;
+}
+
+/* Nutrition Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-modal:hover {
+  color: var(--text-color);
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background: #1a252f;
+}
+
+/* Nutrition Info Button */
+.nutrition-info-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nutrition-info-btn:hover {
+  background: var(--primary-color);
+  color: white;
 }
 
 /* Footer */
