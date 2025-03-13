@@ -1,0 +1,200 @@
+/* Global Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #c0392b;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Lato', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--light-bg);
+}
+
+/* Header Styles */
+.header {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('../images/restaurant-bg.jpg') center/cover;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Menu Section */
+.menu-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.menu-category {
+  margin-bottom: 3rem;
+}
+
+.category-title {
+  font-family: var(--font-primary);
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.item-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.item-content {
+  padding: 1.5rem;
+}
+
+.item-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.item-description {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.item-price {
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.dietary-icons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.dietary-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Special Dishes Section */
+.special-dishes {
+  background: var(--primary-color);
+  color: white;
+  padding: 3rem 2rem;
+  margin: 3rem 0;
+}
+
+.special-dishes .category-title {
+  color: white;
+  border-color: white;
+}
+
+/* Daily Specials */
+.daily-specials {
+  background: #fff3e0;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+.daily-specials .category-title {
+  color: var(--secondary-color);
+}
+
+/* Footer */
+.footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer h3 {
+  margin-bottom: 1rem;
+  font-family: var(--font-primary);
+}
+
+.reservation-btn {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-btn:hover {
+  background: #a93122;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+  
+  .menu-category {
+    margin-bottom: 2rem;
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+  }
+}
