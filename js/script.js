@@ -373,6 +373,12 @@ document.addEventListener('DOMContentLoaded', () => {
         reservationForm.reset();
     });
 
+    // Reservation button functionality
+    const reserveTableBtn = document.getElementById('reserve-table-btn');
+    reserveTableBtn.addEventListener('click', () => {
+        reservationModal.classList.add('active');
+    });
+
     // Reviews System
     const reviewModal = document.getElementById('review-modal');
     const reviewForm = document.getElementById('review-form');
@@ -492,6 +498,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.open(shareUrl, '_blank', 'width=600,height=400');
     }
+
+    // Make function available globally
+    window.shareMenu = shareMenu;
 
     // Close modals when clicking outside
     window.addEventListener('click', (e) => {
