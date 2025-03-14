@@ -17,6 +17,14 @@
             <p>A culinary journey through exquisite flavors</p>
             <button id="reserve-table-btn" class="reserve-btn">Reserve a Table</button>
         </div>
+        <button id="dark-mode-toggle" class="theme-toggle">
+            <svg class="sun-icon" viewBox="0 0 24 24">
+                <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-2V4c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1s1-.45 1-1zm0 14v-3c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1s1-.45 1-1zm6.36-12.95l2.12-2.12c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0l-2.12 2.12c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0zM4.93 19.07l2.12-2.12c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0l-2.12 2.12c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0zm14.14 0c.39-.39.39-1.02 0-1.41l-2.12-2.12c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l2.12 2.12c.39.39 1.02.39 1.41 0zM4.93 4.93c.39.39 1.02.39 1.41 0l2.12-2.12c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0L4.93 3.52c-.39.39-.39 1.02 0 1.41z"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24">
+                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+            </svg>
+        </button>
     </header>
 
     <div class="search-filter-section">
@@ -29,11 +37,52 @@
             <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
             <button class="filter-btn" data-filter="gluten-free">Gluten Free</button>
             <div class="price-filter">
-                <label for="priceRange">Max Price: $<span id="priceValue">50</span></label>
-                <input type="range" id="priceRange" min="0" max="50" value="50" step="5">
+                <label for="priceRange">Max Price: R<span id="priceValue">500</span></label>
+                <input type="range" id="priceRange" min="0" max="500" value="500" step="50">
             </div>
         </div>
     </div>
+
+    <section id="chefs-specials" class="specials-section">
+        <div class="container">
+            <h2>Chef's Specials</h2>
+            <div class="specials-grid">
+                <div class="special-item">
+                    <div class="special-image">
+                        <img src="images/special1.jpg" alt="Truffle Risotto">
+                        <div class="special-badge">Chef's Choice</div>
+                    </div>
+                    <div class="special-content">
+                        <h3>Truffle Risotto</h3>
+                        <p>Creamy Arborio rice with black truffle shavings and aged Parmesan</p>
+                        <span class="special-price">R320</span>
+                    </div>
+                </div>
+                <div class="special-item">
+                    <div class="special-image">
+                        <img src="images/special2.jpg" alt="Wagyu Steak">
+                        <div class="special-badge">Most Popular</div>
+                    </div>
+                    <div class="special-content">
+                        <h3>Wagyu Steak</h3>
+                        <p>Grade A5 Japanese Wagyu with roasted seasonal vegetables</p>
+                        <span class="special-price">R850</span>
+                    </div>
+                </div>
+                <div class="special-item">
+                    <div class="special-image">
+                        <img src="images/special3.jpg" alt="Seafood Platter">
+                        <div class="special-badge">New</div>
+                    </div>
+                    <div class="special-content">
+                        <h3>Seafood Platter</h3>
+                        <p>Fresh lobster, king crab, and jumbo shrimp with signature sauces</p>
+                        <span class="special-price">R750</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main class="menu-container">
         <!-- Appetizers Section -->
@@ -45,7 +94,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Classic Bruschetta</h3>
                         <p class="item-description">Fresh tomatoes, garlic, and basil on toasted artisan bread</p>
-                        <div class="item-price">$12</div>
+                        <div class="item-price">R85</div>
                         <div class="dietary-icons">
                             <img src="images/icons/vegetarian.svg" alt="Vegetarian" title="Vegetarian">
                         </div>
@@ -56,7 +105,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Crispy Calamari</h3>
                         <p class="item-description">Lightly fried squid with lemon aioli</p>
-                        <div class="item-price">$16</div>
+                        <div class="item-price">R120</div>
                     </div>
                 </article>
             </div>
@@ -71,7 +120,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Filet Mignon</h3>
                         <p class="item-description">Prime beef with truffle butter and roasted vegetables</p>
-                        <div class="item-price">$42</div>
+                        <div class="item-price">R420</div>
                         <div class="dietary-icons">
                             <img src="images/icons/gluten-free.svg" alt="Gluten Free" title="Gluten Free">
                         </div>
@@ -82,7 +131,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Grilled Salmon</h3>
                         <p class="item-description">Fresh Atlantic salmon with lemon herb sauce</p>
-                        <div class="item-price">$34</div>
+                        <div class="item-price">R340</div>
                         <div class="dietary-icons">
                             <img src="images/icons/gluten-free.svg" alt="Gluten Free" title="Gluten Free">
                         </div>
@@ -108,7 +157,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Classic Tiramisu</h3>
                         <p class="item-description">Italian coffee-flavored dessert with mascarpone</p>
-                        <div class="item-price">$12</div>
+                        <div class="item-price">R95</div>
                         <div class="dietary-icons">
                             <img src="images/icons/vegetarian.svg" alt="Vegetarian" title="Vegetarian">
                         </div>
@@ -119,7 +168,7 @@
                     <div class="item-content">
                         <h3 class="item-title">Molten Chocolate Cake</h3>
                         <p class="item-description">Warm chocolate cake with vanilla ice cream</p>
-                        <div class="item-price">$14</div>
+                        <div class="item-price">R140</div>
                         <div class="dietary-icons">
                             <img src="images/icons/vegetarian.svg" alt="Vegetarian" title="Vegetarian">
                             <img src="images/icons/nuts.svg" alt="Contains Nuts" title="Contains Nuts">
@@ -130,13 +179,28 @@
         </section>
     </main>
 
+    <section id="photo-gallery" class="gallery-section">
+        <div class="container">
+            <h2>Our Dishes</h2>
+            <div class="gallery-grid">
+                <!-- Gallery images will be populated by JavaScript -->
+            </div>
+            <div class="gallery-modal">
+                <span class="close-modal">&times;</span>
+                <img id="gallery-modal-img" src="" alt="">
+                <button class="gallery-nav prev">&lt;</button>
+                <button class="gallery-nav next">&gt;</button>
+            </div>
+        </div>
+    </section>
+
     <div id="cart-popup" class="cart-popup">
         <div class="cart-content">
             <h3>Your Order</h3>
             <div id="cart-items"></div>
             <div class="cart-total">
                 <span>Total:</span>
-                <span id="cart-total-amount">$0.00</span>
+                <span id="cart-total-amount">R0.00</span>
             </div>
             <button id="checkout-btn">Proceed to Checkout</button>
             <button id="close-cart-btn">Close</button>
@@ -293,6 +357,9 @@
                 <p>Call us or book online</p>
                 <a href="#" class="reservation-btn">Make a Reservation</a>
             </div>
+        </div>
+        <div class="copyright">
+            <p> &copy2025 Impetix Digital Solutions LLC</p>
         </div>
     </footer>
 

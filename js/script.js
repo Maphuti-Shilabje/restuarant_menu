@@ -2,68 +2,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // Menu items data with nutritional information
     const menuItems = {
         'Classic Bruschetta': {
-            price: 12,
+            price: 85,
             dietary: ['vegetarian'],
             nutrition: {
                 calories: 320,
-                protein: '8g',
-                carbs: '42g',
-                fat: '14g',
+                protein: 8,
+                carbs: 42,
+                fat: 14,
                 allergens: ['gluten']
             }
         },
         'Crispy Calamari': {
-            price: 16,
+            price: 120,
             dietary: [],
             nutrition: {
                 calories: 450,
-                protein: '22g',
-                carbs: '38g',
-                fat: '24g',
+                protein: 24,
+                carbs: 38,
+                fat: 22,
                 allergens: ['seafood']
             }
         },
         'Filet Mignon': {
-            price: 42,
+            price: 420,
             dietary: ['gluten-free'],
             nutrition: {
                 calories: 680,
-                protein: '48g',
-                carbs: '2g',
-                fat: '52g',
+                protein: 48,
+                carbs: 2,
+                fat: 52,
                 allergens: []
             }
         },
         'Grilled Salmon': {
-            price: 34,
+            price: 340,
             dietary: ['gluten-free'],
             nutrition: {
                 calories: 520,
-                protein: '46g',
-                carbs: '0g',
-                fat: '34g',
+                protein: 46,
+                carbs: 0,
+                fat: 34,
                 allergens: ['seafood']
             }
         },
         'Classic Tiramisu': {
-            price: 12,
+            price: 95,
             dietary: ['vegetarian'],
             nutrition: {
                 calories: 420,
-                protein: '6g',
-                carbs: '46g',
-                fat: '24g',
+                protein: 6,
+                carbs: 46,
+                fat: 24,
                 allergens: ['dairy', 'eggs', 'gluten']
             }
         },
         'Molten Chocolate Cake': {
-            price: 14,
+            price: 140,
             dietary: ['vegetarian'],
             nutrition: {
                 calories: 580,
-                protein: '8g',
-                carbs: '68g',
-                fat: '32g',
+                protein: 8,
+                carbs: 68,
+                fat: 32,
                 allergens: ['dairy', 'eggs', 'nuts', 'gluten']
             }
         }
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemElement.innerHTML = `
                     <span>${item.name}</span>
                     <div class="cart-item-actions">
-                        <span class="item-price">$${item.price}</span>
+                        <span class="item-price">R${item.price}</span>
                         <button onclick="removeFromCart(${index})" class="remove-item" title="Remove item">×</button>
                     </div>
                 `;
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        cartTotal.textContent = `$${total.toFixed(2)}`;
+        cartTotal.textContent = `R${total.toFixed(2)}`;
     }
 
     // Remove item from cart
@@ -214,23 +214,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemData = menuItems[itemName];
         if (!itemData) return;
 
-        const nutrition = itemData.nutrition;
-        nutritionContent.innerHTML = `
-            <h4>${itemName}</h4>
+        const nutritionInfo = itemData.nutrition;
+        const modal = document.getElementById('nutrition-modal');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        modalContent.innerHTML = `
+            <span class="close-modal">&times;</span>
+            <h3>Nutrition Information</h3>
             <div class="nutrition-details">
-                <p><strong>Calories:</strong> ${nutrition.calories}</p>
-                <p><strong>Protein:</strong> ${nutrition.protein}</p>
-                <p><strong>Carbohydrates:</strong> ${nutrition.carbs}</p>
-                <p><strong>Fat:</strong> ${nutrition.fat}</p>
-                <p><strong>Allergens:</strong> ${nutrition.allergens.length ? nutrition.allergens.join(', ') : 'None'}</p>
+                <div class="nutrition-item">
+                    <span class="label">Calories:</span>
+                    <span class="value">${nutritionInfo.calories}</span>
+                </div>
+                <div class="nutrition-item">
+                    <span class="label">Protein:</span>
+                    <span class="value">${nutritionInfo.protein}g</span>
+                </div>
+                <div class="nutrition-item">
+                    <span class="label">Carbs:</span>
+                    <span class="value">${nutritionInfo.carbs}g</span>
+                </div>
+                <div class="nutrition-item">
+                    <span class="label">Fat:</span>
+                    <span class="value">${nutritionInfo.fat}g</span>
+                </div>
+                ${nutritionInfo.allergens ? `
+                <div class="nutrition-item allergens">
+                    <span class="label">Allergens:</span>
+                    <span class="value">${nutritionInfo.allergens.join(', ')}</span>
+                </div>
+                ` : ''}
             </div>
         `;
-        nutritionModal.classList.add('active');
+        
+        modal.classList.add('active');
+        
+        const closeBtn = modalContent.querySelector('.close-modal');
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
     }
-
-    closeModal.addEventListener('click', () => {
-        nutritionModal.classList.remove('active');
-    });
 
     // Add buttons to menu items
     menuItemElements.forEach(item => {
@@ -283,17 +306,17 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: "Chef's Special Pasta",
             description: "Fresh homemade pasta with seasonal ingredients",
-            price: "$24.99"
+            price: "R24.99"
         },
         {
             name: "Catch of the Day",
             description: "Fresh local fish with Mediterranean herbs",
-            price: "$29.99"
+            price: "R29.99"
         },
         {
             name: "Special Risotto",
             description: "Creamy risotto with wild mushrooms",
-            price: "$22.99"
+            price: "R22.99"
         }
     ];
 
@@ -508,4 +531,102 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.classList.remove('active');
         }
     });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Check for saved theme preference or use system preference
+    const currentTheme = localStorage.getItem('theme') || 
+        (prefersDarkScheme.matches ? 'dark' : 'light');
+
+    // Apply saved theme on load
+    if (currentTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+    }
+
+    // Toggle theme
+    darkModeToggle.addEventListener('click', () => {
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    // Photo Gallery
+    const galleryGrid = document.querySelector('.gallery-grid');
+    const galleryModal = document.querySelector('.gallery-modal');
+    const modalImg = document.getElementById('gallery-modal-img');
+    const prevBtn = document.querySelector('.gallery-nav.prev');
+    const nextBtn = document.querySelector('.gallery-nav.next');
+    let currentImageIndex = 0;
+
+    // Sample gallery images (in a real app, this would come from a server)
+    const galleryImages = [
+        { src: 'images/gallery1.jpg', alt: 'Signature Pasta' },
+        { src: 'images/gallery2.jpg', alt: 'Fresh Seafood' },
+        { src: 'images/gallery3.jpg', alt: 'Grilled Steak' },
+        { src: 'images/gallery4.jpg', alt: 'Dessert Platter' },
+        { src: 'images/gallery5.jpg', alt: 'Wine Selection' },
+        { src: 'images/gallery6.jpg', alt: 'Chef Special' }
+    ];
+
+    // Create gallery items
+    galleryImages.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
+        item.addEventListener('click', () => openGalleryModal(index));
+        galleryGrid.appendChild(item);
+    });
+
+    function openGalleryModal(index) {
+        currentImageIndex = index;
+        updateModalImage();
+        galleryModal.classList.add('active');
+    }
+
+    function updateModalImage() {
+        const image = galleryImages[currentImageIndex];
+        modalImg.src = image.src;
+        modalImg.alt = image.alt;
+    }
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateModalImage();
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        updateModalImage();
+    });
+
+    // Close gallery modal when clicking outside
+    galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            galleryModal.classList.remove('active');
+        }
+    });
+
+    // Keyboard navigation for gallery
+    document.addEventListener('keydown', (e) => {
+        if (!galleryModal.classList.contains('active')) return;
+        
+        switch (e.key) {
+            case 'ArrowLeft':
+                prevBtn.click();
+                break;
+            case 'ArrowRight':
+                nextBtn.click();
+                break;
+            case 'Escape':
+                galleryModal.classList.remove('active');
+                break;
+        }
+    });
+
+    // Make functions available globally
+    window.shareMenu = shareMenu;
 });
