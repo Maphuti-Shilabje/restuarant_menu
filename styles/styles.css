@@ -1,24 +1,32 @@
 /* Global Styles */
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #c0392b;
-  --text-color: #333;
-  --light-bg: #f9f9f9;
-  --font-primary: 'Playfair Display', serif;
-  --font-secondary: 'Lato', sans-serif;
+  --primary-color: #e65100;
+  --secondary-color: #ff9800;
   --bg-color: #ffffff;
-  --border-color: #ddd;
+  --text-color: #333333;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --card-bg: #ffffff;
+  --border-color: #dddddd;
+  --hover-color: #f5f5f5;
+  --price-color: #2c3e50;
+  --footer-bg: #1a1a1a;
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Lato', sans-serif;
+  --light-bg: #f9f9f9;
 }
 
 [data-theme="dark"] {
-  --bg-color: #1a1a1a;
-  --text-color: #ffffff;
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
   --light-bg: #2d2d2d;
-  --card-bg: #333333;
-  --border-color: #444;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --primary-color: #ff7043;
+  --secondary-color: #ffb74d;
+  --hover-color: #2a2a2a;
+  --price-color: #ffa726;
+  --footer-bg: #000000;
 }
 
 * {
@@ -37,11 +45,14 @@ body {
 
 /* Header Styles */
 .header {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('../images/restaurant-bg.jpg') center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+              url("../images/restuarant.jpg") center/cover;
   color: white;
   text-align: center;
   padding: 4rem 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .header-content {
@@ -54,6 +65,7 @@ body {
 .logo {
   width: 150px;
   margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 .header h1 {
@@ -109,11 +121,11 @@ body {
 }
 
 .menu-item {
-  background: white;
+  background: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .menu-item:hover {
@@ -128,25 +140,40 @@ body {
 
 .item-content {
   padding: 1.5rem;
+  color: var(--text-color);
 }
 
 .item-title {
   font-family: var(--font-primary);
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .item-description {
-  color: #666;
+  color: var(--text-color);
+  opacity: 0.9;
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .item-price {
-  color: var(--secondary-color);
+  color: var(--price-color);
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 400;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
 }
 
 .dietary-icons {
@@ -262,7 +289,8 @@ body {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-color);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   width: 350px;
@@ -306,7 +334,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   animation: slideIn 0.3s ease-out;
 }
 
@@ -333,7 +361,7 @@ body {
 
 .item-price {
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--price-color);
 }
 
 .cart-item .remove-item {
@@ -357,9 +385,10 @@ body {
   font-weight: bold;
   margin: 1rem 0;
   padding-top: 1rem;
-  border-top: 2px solid #eee;
+  border-top: 2px solid var(--border-color);
   font-family: var(--font-primary);
   font-size: 1.2rem;
+  color: var(--price-color);
 }
 
 #checkout-btn, #close-cart-btn {
@@ -443,12 +472,26 @@ body {
 }
 
 .modal-content {
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-color);
   padding: 2rem;
   border-radius: 8px;
-  max-width: 500px;
+  max-width: 400px;
   width: 90%;
   position: relative;
+  z-index: 1001;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s;
+  animation: slideIn 0.3s ease-out; 
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.modal.active .modal-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .close-modal {
@@ -485,10 +528,15 @@ body {
 
 /* Footer */
 .footer {
-  background: var(--primary-color);
+  background: var(--footer-bg);
   color: white;
   padding: 3rem 2rem;
+  margin-top: 2rem;
   text-align: center;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .footer-content {
@@ -535,8 +583,10 @@ body {
   
   .category-title {
     font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
+
 .copyright {
   text-align: center;
   margin-top: 2rem;
@@ -551,11 +601,14 @@ body {
   color: white;
   padding: 0.5rem 1rem;
 }
+
 /* Reviews Section */
 .reviews-section {
   padding: 4rem 2rem;
-  background: var(--light-bg);
+  background: var(--bg-color);
   margin: 2rem auto;
+  margin-top: 0;
+  margin-bottom: 0;
   max-width: 1200px;
 }
 
@@ -583,6 +636,9 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  font-family: var(--font-primary);
 }
 
 .overall-rating {
@@ -623,7 +679,8 @@ body {
 }
 
 .review-card {
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -663,7 +720,7 @@ body {
 }
 
 .review-text {
-  color: #666;
+  color: var(--text-color);
   line-height: 1.6;
 }
 
@@ -705,8 +762,9 @@ body {
 /* Social Share Buttons */
 .social-share {
   text-align: center;
-  padding: 2rem;
-  background: white;
+  padding: 0rem;
+  margin-bottom: 2rem;
+  background: var(--bg-color);
 }
 
 .social-share h3 {
@@ -852,7 +910,7 @@ body {
 /* Chef's Specials Section */
 .specials-section {
   padding: 4rem 2rem;
-  background: var(--light-bg);
+  background: var(--bg-color);
   margin: 2rem 0;
 }
 
@@ -910,13 +968,13 @@ body {
   background: var(--secondary-color);
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  border-radius: 4px;
+  font-weight: 600;
 }
 
 .special-content {
   padding: 1.5rem;
+  color: var(--text-color);
 }
 
 .special-content h3 {
@@ -933,21 +991,33 @@ body {
 
 .special-price {
   display: block;
-  color: var(--secondary-color);
-  font-size: 1.5rem;
+  color: var(--price-color);
+  font-size: 1.4rem;
   font-weight: bold;
   font-family: var(--font-primary);
 }
 
 /* Photo Gallery */
 .gallery-section {
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
   background: var(--bg-color);
+  margin: 2rem auto;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s;
+  z-index: 1000;
 }
 
 .gallery-section .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .gallery-section h2 {
@@ -1044,4 +1114,40 @@ body {
 
 [data-theme="dark"] .modal {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.reviews-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  margin-bottom: 2rem;
+}
+
+.review-text {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.review-author {
+  color: var(--text-color);
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.cart-modal {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.cart-item {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.cart-total {
+  color: var(--price-color);
+  font-weight: bold;
 }
